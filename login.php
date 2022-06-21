@@ -9,7 +9,7 @@
 <body>
   <div class="wrapper">
     <header>Login</header>
-    <form action="#">
+    <form method="post" action="admin/loginProcess.php">
       <div class="field email">
         <div class="input-area">
           <input type="text" placeholder="Username">
