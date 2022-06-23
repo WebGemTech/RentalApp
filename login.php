@@ -12,41 +12,51 @@
     <form method="post" action="admin/loginProcess.php">
       <div class="field email">
         <div class="input-area">
-          <input type="text" placeholder="Username">
+          <input type="text" name="emailid" placeholder="Email ID">
         </div>
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password">
         </div>  
       </div>
       <div class="pass-txt"><a href="#">Forgot password?</a></div>
-      <input type="submit" value="Submit">
+      <input type="submit" name="submit" value="Submit">
     </form>
 
     <?php
                 $fullUrl= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                if(strpos($fullUrl,"admin_un-authorize-user")==true) {
+                if(strpos($fullUrl,"email-empty")==true) {
                     echo "<div class='alert alert-primary' role='alert'>
-                                Unauthorize Admin Access
+                                Please enter email id!
                             </div>";
                 }
-                if(strpos($fullUrl,"admin_username-empty")==true) {
+                if(strpos($fullUrl,"password-empty")==true) {
                     echo "<div class='alert alert-primary' role='alert'>
-                                Admin Username is empty
+                                Please enter password!
                             </div>";
                 }
-                if(strpos($fullUrl,"admin_password-empty")==true) {
-                    echo "<div class='alert alert-primary' role='alert'>
-                                Admin Password is empty
-                            </div>";
-                }
+                if(strpos($fullUrl,"success")==true) {
+                  echo "<div class='alert alert-primary' role='alert'>
+                              Successfully login!
+                          </div>";
+              }
+              if(strpos($fullUrl,"invalid-password")==true) {
+                  echo "<div class='alert alert-primary' role='alert'>
+                              Please enter valid password!
+                          </div>";
+              }
+              if(strpos($fullUrl,"invalid-email")==true) {
+                echo "<div class='alert alert-primary' role='alert'>
+                            Please enter valid email id!
+                        </div>";
+            }
+            if(strpos($fullUrl,"un-authorize-user")==true) {
+                echo "<div class='alert alert-primary' role='alert'>
+                            un-authorized user access!
+                        </div>";
+            }
 
-                if(strpos($fullUrl,"admin_invalid_password")==true) {
-                    echo "<div class='alert alert-primary' role='alert'>
-                                Invalid Admin Password
-                            </div>";
-                }
                 ?>
 
 </body>

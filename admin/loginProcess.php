@@ -1,41 +1,41 @@
 <?php
-require_once '../resadmin/connection.php';
+include 'config.php';
 $flag = true;
-if ($_POST['admin_submit']) {
-    $username = $_POST['admin_uname'];
-    $pass = $_POST['admin_pass'];
+if (isset($_POST['submit'])) {
+    $username = $_POST['emailid'];
+    $pass = $_POST['password'];
 
     if (empty(trim($username))) {
-        header("location:../Login.php?admin_username-empty");
+        header("location:../login.php?email-empty");
         $flag = false;
         exit();
     }
     if (empty(trim($pass))) {
-        header("location:../Login.php?admin_password-empty");
+        header("location:../login.php?password-empty");
         $flag = false;
         exit();
     }
     if ($flag === true) {
-        $sql = "SELECT res_username FROM res_login WHERE res_username = :username";
+        $sql = "SELECT user_email FROM user_login WHERE user_email = :email";
         $stmt = $config->prepare($sql);
-        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $username);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
-            $sql = "SELECT res_pass FROM res_login WHERE res_pass = :pass";
+            $sql = "SELECT user_pass FROM user_login WHERE user_pass = :pass";
             $stmt = $config->prepare($sql);
             $stmt->bindParam(':pass', $pass);
             $stmt->execute();
             if ($stmt->rowCount() > 0) {
                 session_start();
-                $_SESSION['username'] = $username;
-                header('location:../resboard.php');
+                $_SESSION['email'] = $username;
+                header('location:../login.php?success');
             } else {
-                header("location:../Login.php?admin_invalid_password");
+                header("location:../login.php?invalid-password");
             }
         } else {
-            header("location:../Login.php?admin_un-authorize-user");
+            header("location:../login.php?invalid-email");
         }
     } else {
-        header("location:../Login.php?admin_un-authorize-user");
+        header("location:../Login.php?un-authorize-user");
     }
 }
