@@ -12,7 +12,7 @@
     <form method="post" action="admin/loginProcess.php">
       <div class="field email">
         <div class="input-area">
-          <input type="text" name="emailid" placeholder="Email ID">
+          <input type="email" name="emailid" placeholder="Email ID">
         </div>
       </div>
       <div class="field password">

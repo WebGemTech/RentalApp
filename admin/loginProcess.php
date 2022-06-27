@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+require_once 'config.php';
 $flag = true;
 if (isset($_POST['submit'])) {
     $username = $_POST['emailid'];
@@ -17,12 +17,12 @@ if (isset($_POST['submit'])) {
     }
     if ($flag === true) {
         $sql = "SELECT user_email FROM user_login WHERE user_email = :email";
-        $stmt = $config->prepare($sql);
+        $stmt = $con->prepare($sql);
         $stmt->bindParam(':email', $username);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $sql = "SELECT user_pass FROM user_login WHERE user_pass = :pass";
-            $stmt = $config->prepare($sql);
+            $stmt = $con->prepare($sql);
             $stmt->bindParam(':pass', $pass);
             $stmt->execute();
             if ($stmt->rowCount() > 0) {

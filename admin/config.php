@@ -1,11 +1,10 @@
 <?php
-$conn = 'localhost';
+$server = 'localhost';
 $username = 'root';
 $pass = '';
-$db ='rentalapp';
 try {
-    $config = new PDO("mysql:host=$conn;bdname=$db",$username,$pass);
-    $config->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $con = new PDO("mysql:host=$server;dbname=rental_app",$username,$pass);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $e) {
     echo "!!Opps Something went Wrong, Please try again later" . $e->getMessage();
 }
