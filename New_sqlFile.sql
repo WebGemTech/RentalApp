@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2022 at 07:56 PM
+-- Generation Time: Jun 27, 2022 at 09:06 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rentalapp`
+-- Database: `rental_app`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `user_login` (
 
 INSERT INTO `user_login` (`user_id`, `user_email`, `user_pass`) VALUES
 (1, 'admin@gmail.com', 'admin'),
-(2, 'staff', 'staff');
+(2, 'staff@gmail.com', 'staff');
 
 --
 -- Indexes for dumped tables
